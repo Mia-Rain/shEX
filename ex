@@ -8,11 +8,13 @@ math() {
   done
   echo "${m:-$1}"
 }
-IFS="^"; set -- $1 # $1 should be "?^?.*" # thus this splits it into $@ with ^ removed
-od="$1"; shift 1; 
-while [ "$1" ]; do # loop over ever argument 
+IFS="^"; set -- $1
+# $1 should be "?^?.*" # thus this splits it into $@ with ^ removed
+od="$1"; shift 1; while :; do
+  # a manual break always occurs 
+  # : should be in theory faster than [ : ] 
   [ "$2" ] || {
-    ex=$(math $od ${ex:-$1} 1)
+    ex=$(math $od ${ex:-$1})
     echo "$ex"
     break
   } && {
