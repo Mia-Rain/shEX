@@ -1,0 +1,9 @@
+---
+sh^
+-- exponents in pure sh
+---
+Notes
+-- recursion is used such that 2^2^2 would work in theory
+-- however keep in mind that sh has a (2^63)-1 max number limit
+-- after which overflow occurs
+---
